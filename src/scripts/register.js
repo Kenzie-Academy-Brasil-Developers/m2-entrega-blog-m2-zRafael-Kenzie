@@ -4,9 +4,9 @@ export class Signup {
 
     static createNewUser() {
       const nameInput = document.getElementById('name')
-      const emailInput = document.getElementById('email')
+      const emailInput = document.getElementById('emailSingup')
       const fotoInput = document.getElementById("avatarUrl")
-      const passInput = document.getElementById('password')
+      const passInput = document.getElementById('passwordSingup')
       const btnSignup = document.getElementById('btnSignup')
   
       btnSignup.addEventListener('click', async (event) => {

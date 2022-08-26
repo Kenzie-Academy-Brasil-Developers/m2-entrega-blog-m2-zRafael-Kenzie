@@ -37,6 +37,7 @@ export class ApiRequests{
               body: JSON.stringify(body)
             })
             .then(res => res.json())
+            .then(location.reload())
             .catch(err => console.log(err))
         
             return newUser
