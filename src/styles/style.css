@@ -33,7 +33,7 @@ h2 {
     font-size: 35px;
     line-height: 42px;
     text-shadow: 1px;
-margin: 8%;
+    margin: 8%;
     color: var(--branco);
     -webkit-text-stroke-width: 1px; /* largura da borda */
     -webkit-text-stroke-color: black; /* cor da borda */

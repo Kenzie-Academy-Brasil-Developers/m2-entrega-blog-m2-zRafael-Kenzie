@@ -1,12 +1,9 @@
 import { ApiRequests } from "./requests.js"
 
 class Login{
-    static Login(){
+    static loginPage(){
         const token = localStorage.getItem("@blogzinho:token")
 
-        if(token){
-            window.location.assign("src/pages/home.html")
-        }
 
         const emailInput = document.getElementById("emailInput")
         const passwordInput = document.getElementById("passwordInput")
@@ -24,3 +21,5 @@ class Login{
         })
     }
 }
+
+Login.loginPage()
