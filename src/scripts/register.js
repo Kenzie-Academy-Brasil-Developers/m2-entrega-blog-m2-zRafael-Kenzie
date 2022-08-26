@@ -1,6 +1,6 @@
-import { ApiRequests } from "./requests"
+import { ApiRequests } from "./requests.js"
 
-class Signup {
+export class Signup {
 
     static createNewUser() {
       const nameInput = document.getElementById('name')

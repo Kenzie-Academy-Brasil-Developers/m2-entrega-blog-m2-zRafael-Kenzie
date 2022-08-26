@@ -7,6 +7,13 @@ export class ApiRequests{
         authorization: `Bearer ${this.token}`
     }
 
+    // static async verificar(body){
+    //     const userIdVerify = await fetch(`${this.baseUrl}/users/`),{
+    //         method: "GET",
+    //         headers
+    //     }
+    // }
+
     static async login(body) {
         const userLogin = await fetch(`${this.baseUrl}/users/login`, {
             method: "POST",
@@ -16,7 +23,8 @@ export class ApiRequests{
           .then(res=>res.json())
           .then(res =>{
             localStorage.setItem("@blogzinho:token",res.token)
-            localStorage.setItem("@blogzinho:UserID",res.userID)
+            localStorage.setItem("@blogzinho:UserID",res.userId)
+           location.assign('src/pages/home.html')
           })
           .catch(err=>console.log(err))
           return userLogin
@@ -29,9 +37,6 @@ export class ApiRequests{
               body: JSON.stringify(body)
             })
             .then(res => res.json())
-            .then(res => {
-               return res
-            })
             .catch(err => console.log(err))
         
             return newUser
