@@ -1,3 +1,5 @@
+import { Home } from "./home"
+
 export class ApiRequests{
 
     static baseUrl = "https://blog-m2.herokuapp.com"
@@ -19,6 +21,7 @@ export class ApiRequests{
             localStorage.setItem("@blogzinho:token",res.token)
             localStorage.setItem("@blogzinho:UserID",res.userId)
             location.assign("/src/pages/home.html")
+            
           })
           .catch(err=>console.log(err))
           return userLogin
@@ -32,10 +35,10 @@ export class ApiRequests{
       })
       .then(res=>res.json())
       .then(res=>{
-        localStorage.setItem('@blogzinho:username',res.username)
-        localStorage.setItem('@blogzinho:userAvatar',res.avatarUrl)
+        res
       })
-      return user
+      .catch(err =>console.log(err))
+      Build_Header.build_profile(dados)
     }
 
     static async createUser(body) {
@@ -45,7 +48,7 @@ export class ApiRequests{
           body: JSON.stringify(body)
         })
         .then(res => res.json())
-        .then(res => {
+        .then(res => { 
             return res
         })
         .catch(err => console.log(err))
@@ -62,7 +65,42 @@ export class ApiRequests{
       .then(res => {
         return res
     })
-      // .catch(location.assign('../../index.html'))
-      return posts
+      .catch(err=>console.log(err))
+      Home.renderPost(posts)
     }
+
+    static posting(dados){
+      const postar = await fetch(`${this.baseUrl}/postar`,{
+        method: 'POST'
+        headers: this.headers
+        body: Json.stringify(dados)
+      })
+      .then(res => res.json())
+      .then(res =>location.reaload())
+      .catch(err => console.log(err))
+      return postar
+    }
+
+    static edit_post(value,id){
+      const editar = await fetch(`${this.baseUrl}/posts/${id}`,{
+        method: 'PATCH'
+        headers: this.headers
+        body: Json.stringify(value)
+      })
+      .then(res =>res.json())
+      .then(res => location.reaload())
+      .catch(err =>console.log(err))
+    }
+
+    static delet_post(id){
+      const editar = await fetch(`${this.baseUrl}/posts/${id}`,{
+        method: 'DELETE'
+        headers: this.headers
+      })
+      .then(res =>location.reaload)
+      .catch(err =>console.log(err))
+    
+
+    }
+
 }
