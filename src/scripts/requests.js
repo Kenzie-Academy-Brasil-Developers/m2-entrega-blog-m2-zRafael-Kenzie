@@ -50,4 +50,16 @@ export class ApiRequests{
       .catch(err => console.log(err))
       return posts
     }
+
+    static async postar(body){
+      const postar = await fetch (`${this.baseUrl}/posts`,{
+        method:"POST",
+        headers:this.headers,
+        body: JSON.stringify(body)
+      })
+      .then(res => res.json())
+      .then(res => {
+        return res})
+      .catch(err => console.log(err))
+    }
 }
