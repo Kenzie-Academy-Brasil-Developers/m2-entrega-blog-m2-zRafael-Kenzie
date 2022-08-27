@@ -30,12 +30,15 @@ class posts{
 
         return li
     }
+
+
+    
     
 }
 
 const dataPost = await ApiRequests.posts()
 
-const ulTeste = document.querySelector(".ul-teste")
+const ul= document.querySelector(".ul-post")
 
 
-posts.renderPost(dataPost, ulTeste)
+posts.renderPost(dataPost, ul)
