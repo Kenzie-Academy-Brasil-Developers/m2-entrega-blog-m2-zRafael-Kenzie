@@ -1,6 +1,12 @@
-import { ApiRequests } from "./requests"
-
 class Signup {
+
+  static baseUrl = "https://blog-m2.herokuapp.com"
+  static token = localStorage.getItem("@blogzinho:token") || ""
+  static id = localStorage.getItem('@blogzinho:UserID')|| ''
+  static headers = {
+      'Content-Type':"application/json",
+      Authorization: `Bearer ${this.token}`
+  }
 
     static createNewUser() {
       const nameInput = document.getElementById('name')
@@ -19,8 +25,24 @@ class Signup {
           password: passInput.value
         }
   
-         ApiRequests.createUser(data)
+         this.createUser(data)
       })
-    }}
+    }
+  
+    static async createUser(body) {
+      const newUser = await fetch(`${this.baseUrl}/users/register`, {
+        method: "POST",
+        headers: this.headers,
+        body: JSON.stringify(body)
+      })
+      .then(res => res.json())
+      .then(res => { 
+          return res
+      })
+      .catch(err => console.log(err))
+  
+      return newUser
+    }
+}
 
     Signup.createNewUser()

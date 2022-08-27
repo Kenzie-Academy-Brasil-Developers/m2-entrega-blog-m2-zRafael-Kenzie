@@ -83,24 +83,7 @@ export class Build_Posts {
       author_img.src = dados.user.avatarUrl
       author_img.className = 'author--img'
 
-      if (dados.user.id == localStorage.getItem('Id')) {
-      const button_editar01 = document.createElement('button')
-      div_img.appendChild(button_editar01)
-      button_editar01.id = dados.id
-      button_editar01.className = 'button--editar-01'
-      button_editar01.addEventListener("click", (data) => {
-          
-          ManipularPosts.editing_post(data.target.id)
-      })
 
-      const button_excluir01 = document.createElement('button')
-      div_img.appendChild(button_excluir01)
-      button_excluir01.className = 'button--excluir-01'
-      button_excluir01.id = dados.id
-      button_excluir01.addEventListener("click", (data) => {
-          ManipularPosts.deleting_post(data.target.id);
-      })
-  }
 
 
       const post_content = document.createElement('div')
