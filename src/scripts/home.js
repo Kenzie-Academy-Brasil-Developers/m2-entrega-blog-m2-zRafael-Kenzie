@@ -1,6 +1,9 @@
 
+import { Logout } from "./logout.js";
 import { ApiRequests } from "./requests.js"
-class posts{
+
+
+class Home{
 
     static renderPost(arrPost, container){
         arrPost.data.forEach(element => {
@@ -31,7 +34,20 @@ class posts{
         return li
     }
 
+    static renderUser(){
+        const header = document.querySelector('header')
+        const username = localStorage.getItem('@blogzinho:username')
+        const avatarUrl = localStorage.getItem('@blogzinho:avatarUrl')
 
+        const avatar = document.createElement('img')
+        const name = document.createElement('p')
+
+        avatar.src = avatarUrl
+        username.innerText = username
+
+        header.append(avatar,username)
+
+    }
     
     
 }
@@ -39,6 +55,11 @@ class posts{
 const dataPost = await ApiRequests.posts()
 
 const ul= document.querySelector(".ul-post")
+Logout.logoutToIndex()
+Home.renderPost(dataPost, ul)
+Home.renderUser()
 
 
-posts.renderPost(dataPost, ul)
+
+
+

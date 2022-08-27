@@ -18,6 +18,7 @@ class Login{
             }
             
             ApiRequests.login(data)
+            ApiRequests.getUser()
         })
     }
 }
