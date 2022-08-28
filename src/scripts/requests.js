@@ -1,17 +1,8 @@
-import { Build_Header, Build_Posts } from "./home.js";
+import { BuildHeader, BuildPosts } from "./home.js";
 
+export class Apirequest {
 
-export class Get_Dados {
-
-  static baseUrl = "https://blog-m2.herokuapp.com"
-    static token = localStorage.getItem("@blogzinho:token") || ""
-    static headers = {
-        'Content-Type':"application/json",
-        Authorization: `Bearer ${this.token}`
-    }
-
-    
-  static async user_dados() {
+  static async userDados() {
 
     const dados = await fetch(`${this.baseUrl}/users/${localStorage.getItem('@blogzinho:UserID')}`, {
       method: "GET",
@@ -21,11 +12,11 @@ export class Get_Dados {
       .then(response => response)
       .catch(err => console.error(err));
 
-    Build_Header.build_profile(dados)
+    BuildHeader.buildProfile(dados)
 
   }
 
-  static async get_posts() {
+  static async getPosts() {
 
     const dados = await fetch(`${this.baseUrl}/posts?page=1`, {
       method: "GET",
@@ -35,13 +26,8 @@ export class Get_Dados {
       .then(response => response)
       .catch(err => console.error(err));
 
-    Build_Posts.creat_card(dados)
+    BuildPosts.creatCard(dados)
   }
-
-
-}
-
-export class Requisition {
 
   static baseUrl = "https://blog-m2.herokuapp.com"
     static token = localStorage.getItem("@blogzinho:token") || ""
@@ -63,7 +49,7 @@ export class Requisition {
 
   }
 
-  static edit_post(value, id) {
+  static editPost(value, id) {
 
   fetch(`${this.baseUrl}/posts/${id}`, {
       method: "PATCH",
@@ -76,7 +62,7 @@ export class Requisition {
   
   }
 
-  static delet_post(id) {
+  static deletPost(id) {
 
   fetch(`${this.baseUrl}/posts/${id}`, {
       method: "DELETE",

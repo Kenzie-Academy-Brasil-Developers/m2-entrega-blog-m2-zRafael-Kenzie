@@ -1,135 +1,135 @@
-import { Get_Dados, Requisition } from "./requests.js";
+import { Apirequest } from "./requests.js";
 
-export class Build_Header {
+export class BuildHeader {
 
-    static build_profile(dados) {
+    static buildProfile(dados) {
         const header = document.getElementsByTagName('header')[0];
-        const user_dados = document.createElement('div')
-        user_dados.className = 'dados--user'
-        header.appendChild(user_dados)
+        const userDados = document.createElement('div')
+        userDados.className = 'dados-user'
+        header.appendChild(userDados)
 
         const avatar = document.createElement('img')
         avatar.src = dados.avatarUrl
-        avatar.className = 'avatar--user'
-        user_dados.appendChild(avatar)
+        avatar.className = 'avatar-user'
+        userDados.appendChild(avatar)
 
-        const user_name = document.createElement('h1')
-        user_name.className = 'name--user'
-        user_dados.appendChild(user_name)
-        user_name.innerText = dados.username
+        const username = document.createElement('h1')
+        username.className = 'name-user'
+        userDados.appendChild(username)
+        username.innerText = dados.username
 
-        Build_Header.logout_button()
+        BuildHeader.logoutButton()
 
 
     }
 
-    static logout_button() {
+    static logoutButton() {
         const header = document.getElementsByTagName('header')[0];
 
-        const logout_button = document.createElement('button')
-        header.appendChild(logout_button)
-        logout_button.innerText = 'Logout'
-        logout_button.className = 'logout--button'
-        logout_button.addEventListener('click', ()=> {
+        const logoutButton = document.createElement('button')
+        header.appendChild(logoutButton)
+        logoutButton.innerText = 'Logout'
+        logoutButton.className = 'logout-button'
+        logoutButton.addEventListener('click', ()=> {
             localStorage.clear()
             location.assign('../../index.html')
         })
 
-        Build_Main.new_post()
+        BuildMain.newPost()
     }
 
 }
 
-class Build_Main {
-    static new_post() {
+class BuildMain {
+    static newPost() {
         const body = document.getElementsByTagName('body')[0]
         const main = document.createElement('main')
         body.appendChild(main)
 
-        const new_post = document.createElement('div')
-        main.appendChild(new_post)
-        new_post.className = 'new--post--container'
+        const newPost = document.createElement('div')
+        main.appendChild(newPost)
+        newPost.className = 'new-post-container'
 
-        const post_area = document.createElement('textarea')
-        new_post.appendChild(post_area)
-        post_area.className = 'post--area'
-        post_area.placeholder = 'No que está pensando?'
+        const postArea = document.createElement('textarea')
+        newPost.appendChild(postArea)
+        postArea.className = 'post-area'
+        postArea.placeholder = 'No que está pensando?'
 
         const postar = document.createElement('button')
-        new_post.appendChild(postar)
+        newPost.appendChild(postar)
         postar.className = 'postar'
         postar.innerText = '+'
-        postar.addEventListener("click", Post_Manipulations.new_post)
+        postar.addEventListener("click", PostManipulation.newPost)
 
-        Get_Dados.get_posts()
+        Apirequest.getPosts()
 
 
 
     }
 }
 
-export class Build_Posts {
+export class BuildPosts {
 
-    static creat_card(dados) {
+    static creatCard(dados) {
 
         const body = document.getElementsByTagName('body')[0]
-        const old_posts = document.createElement('ul')
-        old_posts.className = 'old--posts'
-        body.appendChild(old_posts)
+        const postsFeitos = document.createElement('ul')
+        postsFeitos.className = 'old-posts'
+        body.appendChild(postsFeitos)
 
         dados.data.forEach(element => {
-            const post_card = document.createElement('li')
-            old_posts.appendChild(post_card)
-            post_card.className = 'post--card'
+            const postCard = document.createElement('li')
+            postsFeitos.appendChild(postCard)
+            postCard.className = 'post-card'
 
-            Build_Posts.creat_card_content(element, post_card)
+            BuildPosts.cardContent(element, postCard)
         });
 
     }
 
-    static creat_card_content(dados, father) {
+    static cardContent(dados, father) {
 
-        const div_img = document.createElement('div')
-        father.appendChild(div_img)
-        div_img.className = 'div--img'
+        const divImg = document.createElement('div')
+        father.appendChild(divImg)
+        divImg.className = 'div-img'
 
-        const author_img = document.createElement('img')
-        div_img.appendChild(author_img)
-        author_img.src = dados.user.avatarUrl
-        author_img.className = 'author--img'
+        const UserImg = document.createElement('img')
+        divImg.appendChild(UserImg)
+        UserImg.src = dados.user.avatarUrl
+        UserImg.className = 'author-img'
 
         if (dados.user.id == localStorage.getItem('@blogzinho:UserID')) {
-        const button_editar01 = document.createElement('button')
-        div_img.appendChild(button_editar01)
-        button_editar01.id = dados.id
-        button_editar01.className = 'button--editar-desktop'
-        button_editar01.addEventListener("click", (data) => {
+        const btnEditarDesktop = document.createElement('button')
+        divImg.appendChild(btnEditarDesktop)
+        btnEditarDesktop.id = dados.id
+        btnEditarDesktop.className = 'button-editar-desktop'
+        btnEditarDesktop.addEventListener("click", (data) => {
             
-            Post_Manipulations.editing_post(data.target.id)
+            PostManipulation.editPost(data.target.id)
         })
 
-        const button_excluir01 = document.createElement('button')
-        div_img.appendChild(button_excluir01)
-        button_excluir01.className = 'button--excluir-desktop'
-        button_excluir01.id = dados.id
-        button_excluir01.addEventListener("click", (data) => {
-            Post_Manipulations.deleting_post(data.target.id);
+        const btnExcluirDesktop = document.createElement('button')
+        divImg.appendChild(btnExcluirDesktop)
+        btnExcluirDesktop.className = 'button-excluir-desktop'
+        btnExcluirDesktop.id = dados.id
+        btnExcluirDesktop.addEventListener("click", (data) => {
+            PostManipulation.deletePost(data.target.id);
         })
         
     }
 
 
-        const post_content = document.createElement('div')
-        father.appendChild(post_content)
-        post_content.className = 'post--content'
+        const postContent = document.createElement('div')
+        father.appendChild(postContent)
+        postContent.className = 'post-content'
 
 
-        const author_name = document.createElement('h2')
-        author_name.innerText = dados.user.username
-        post_content.appendChild(author_name)
+        const namePost = document.createElement('h2')
+        namePost.innerText = dados.user.username
+        postContent.appendChild(namePost)
 
         const content = document.createElement('p')
-        post_content.appendChild(content)
+        postContent.appendChild(content)
         content.innerText = dados.content
 
         const footer = document.createElement('div')
@@ -142,38 +142,38 @@ export class Build_Posts {
         footer.appendChild(date)
 
         if (dados.user.id == localStorage.getItem('@blogzinho:UserID')) {
-            const button_editar02 = document.createElement('button')
-            button_editar02.id = dados.id
-            footer.appendChild(button_editar02)
-            button_editar02.className = 'button--editar-mobile'
-            button_editar02.addEventListener("click", (data) => {
-                Post_Manipulations.editing_post(data.target.id)
+            const btnEditarMobile = document.createElement('button')
+            btnEditarMobile.id = dados.id
+            footer.appendChild(btnEditarMobile)
+            btnEditarMobile.className = 'button-editar-mobile'
+            btnEditarMobile.addEventListener("click", (data) => {
+                PostManipulation.editPost(data.target.id)
             })
 
             
 
-            const button_excluir02 = document.createElement('button')
-            footer.appendChild(button_excluir02)
-            button_excluir02.className = 'button--excluir-mobile'
-            button_excluir02.id = dados.id
-            button_excluir02.addEventListener("click", (data) => {
-                Post_Manipulations.deleting_post(data.target.id);
+            const btnExcluirMobile = document.createElement('button')
+            footer.appendChild(btnExcluirMobile)
+            btnExcluirMobile.className = 'button-excluir-mobile'
+            btnExcluirMobile.id = dados.id
+            btnExcluirMobile.addEventListener("click", (data) => {
+                PostManipulation.deletePost(data.target.id);
             })
         }
 
     }
 }
 
-class Post_Manipulations {
+class PostManipulation {
 
-    static new_post() {
-        const post = document.getElementsByClassName('post--area')[0]
+    static newPost() {
+        const post = document.getElementsByClassName('post-area')[0]
 
-        Requisition.posting(post.value)
+        Apirequest.posting(post.value)
 
     }
 
-    static async editing_post(id){
+    static async editPost(id){
 
         const { value: text } = await Swal.fire({
             input: 'textarea',
@@ -187,14 +187,13 @@ class Post_Manipulations {
           
           if (text) {
             Swal.fire('Post Editado com sucesso')
-            Requisition.edit_post(text, id)
+            Apirequest.editPost(text, id)
           }
     }
 
-    static async deleting_post(id){
+    static async deletePost(id){
         Swal.fire({
             title: 'Quer mesmo deletar?',
-            text: "Essa ação não pode ser desfeita!",
             icon: 'warning',
             showCancelButton: true,
             confirmButtonColor: '#3085d6',
@@ -208,7 +207,7 @@ class Post_Manipulations {
                 'success'
               )
               console.log(id);
-              Requisition.delet_post(id)
+              Apirequest.deletPost(id)
             }
           })
     }
@@ -216,5 +215,5 @@ class Post_Manipulations {
 
 }
 
-Get_Dados.user_dados()
+Apirequest.userDados()
 

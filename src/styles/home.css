@@ -20,18 +20,18 @@ header {
     align-items: center;
 }
 
-.dados--user {
+.dados-user {
     width: auto;
     display: flex;
     align-items: center;
 }
 
-.avatar--user {
+.avatar-user {
     width: 68px;
     border-radius: 100px;
 }
 
-.name--user {
+.name-user {
     width: 109px;
     font-style: normal;
     font-weight: 700;
@@ -43,7 +43,7 @@ header {
     -webkit-text-stroke: 0.5px rgb(0, 0, 0);
 }
 
-.logout--button {
+.logout-button {
     background-color: var(--button-color);
     width: 128px;
     height: 38px;
@@ -61,7 +61,7 @@ main {
     justify-content: center;
 }
 
-.new--post--container {
+.new-post-container {
 
     min-width: 380PX;
     width: 750px;
@@ -75,7 +75,7 @@ main {
     margin: 8% 5%;
 }
 
-.post--area {
+.post-area {
     margin: 20px auto 0;
     width: 90%;
     max-width: 750px;
@@ -104,7 +104,7 @@ main {
     cursor: pointer;
 }
 
-.old--posts {
+.old-posts {
     width: 100%;
     height: auto;
     display: flex;
@@ -113,7 +113,7 @@ main {
 }
 
 
-.post--card {
+.post-card {
     width: 750px;
     height: auto;
     background-color: white;
@@ -125,13 +125,13 @@ main {
     flex-wrap: wrap;
 }
 
-.div--img {
+.div-img {
     width: 50%;
     display: flex;
     flex-wrap: wrap;
 }
 
-.author--img {
+.author-img {
     width: 122px;
     height: 115px;
     border-radius: 100px;
@@ -139,7 +139,7 @@ main {
 
 }
 
-.button--editar-desktop {
+.button-editar-desktop {
     background-image: url(/src/assets/editar_icon.png);
     background-position: center;
     width: 30px;
@@ -151,7 +151,7 @@ main {
     display: none;
 }
 
-.button--excluir-desktop {
+.button-excluir-desktop {
     background-image: url(/src/assets/excluir_icon.png);
     background-position: center;
     width: 30px;
@@ -163,18 +163,18 @@ main {
     display: none;
 }
 
-.post--content {
+.post-content {
     width: 100%;
     text-align: center;
     padding: 2%;
 }
 
-.post--content p{
+.post-content p{
     text-align: center;
     word-break: break-all;
 }
 
-.button--excluir-mobile {
+.button-excluir-mobile {
     background-image: url(/src/assets/excluir_icon.png);
     background-position: center;
     width: 30px;
@@ -184,7 +184,7 @@ main {
     cursor: pointer;
 }
 
-.button--editar-mobile {
+.button-editar-mobile {
     background-image: url(/src/assets/editar_icon.png);
     background-position: center;
     width: 30px;
@@ -203,7 +203,7 @@ main {
     margin: 4%;
 }
 
-.post--content h2 {
+.post-content h2 {
     font-style: normal;
     font-weight: 700;
     font-size: 24px;
@@ -212,34 +212,34 @@ main {
 
 @media screen and (min-width: 876px) {
 
-    .div--img {
+    .div-img {
         width: 20%;
         height: 90%;
         display: flex;
     }
 
-    .button--editar-desktop,
-    .button--excluir-desktop {
+    .button-editar-desktop,
+    .button-excluir-desktop {
         display: inline;
     }
     
-    .button--excluir-mobile,
-    .button--editar-mobile {
+    .button-excluir-mobile,
+    .button-editar-mobile {
         display: none;
     }
 
-    .old--posts{
+    .old-posts{
         flex-direction: column;
         align-items: center;
     }
 
-    .post--content {
+    .post-content {
         width: 50%;
         height: 90%;
         text-align: left;
     }
 
-    .post--content h2 {
+    .post-content h2 {
         margin: 10px 0;
     }
 
@@ -252,7 +252,7 @@ main {
         margin-top: 100%;
     }
 
-    .author--img {
+    .author-img {
         width: 122px;
         height: 115px;
         border-radius: 100px;
