@@ -1,11 +1,8 @@
 class Signup {
 
   static baseUrl = "https://blog-m2.herokuapp.com"
-  static token = localStorage.getItem("@blogzinho:token") || ""
-  static id = localStorage.getItem('@blogzinho:UserID')|| ''
   static headers = {
       'Content-Type':"application/json",
-      Authorization: `Bearer ${this.token}`
   }
 
     static createNewUser() {

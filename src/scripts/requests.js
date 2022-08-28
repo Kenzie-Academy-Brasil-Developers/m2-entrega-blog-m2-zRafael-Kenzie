@@ -1,75 +1,91 @@
-import { Home } from "./home.js"
+import { Build_Header, Build_Posts } from "./home.js";
 
 
-export class ApiRequests{
+export class Get_Dados {
 
-    static baseUrl = "https://blog-m2.herokuapp.com"
+  static baseUrl = "https://blog-m2.herokuapp.com"
     static token = localStorage.getItem("@blogzinho:token") || ""
-    static id = localStorage.getItem('@blogzinho:UserID')|| ''
     static headers = {
         'Content-Type':"application/json",
         Authorization: `Bearer ${this.token}`
     }
 
-    static async getUser(body){
-      const user= await fetch(`${this.baseUrl}/users/${id}`,{
-        method: "GET",
-        headers: this.headers,
-        body: JSON.stringify(body)
-      })
-      .then(res=>res.json())
-      .then(res=>{
-        res
-      })
-      .catch(err =>console.log(err))
-      Build_Header.build_profile(dados)
-    }
-
-    static async posts(){
-      const posts = await fetch(`${this.baseUrl}/posts?page=1`,{
-        method: "GET",
-        headers:this.headers
-      })
-      .then(res => res.json())
-      .then(res => {
-        return res
-    })
-      .catch(err=>console.log(err))
-      Home.renderPost(posts)
-    }
-
-    // static async posting(dados){
-    //   const postar = await fetch(`${this.baseUrl}/postar`,{
-    //     method: 'POST'
-    //     headers: this.headers
-    //     body: Json.stringify(dados)
-    //   })
-    //   .then(res => res.json())
-    //   .then(res =>location.reaload())
-    //   .catch(err => console.log(err))
-    //   return postar
-    // }
-
-    // static async edit_post(value,id){
-    //   const editar = await fetch(`${this.baseUrl}/posts/${id}`,{
-    //     method: 'PATCH'
-    //     headers: this.headers
-    //     body: Json.stringify(value)
-    //   })
-    //   .then(res =>res.json())
-    //   .then(res => location.reaload())
-    //   .catch(err =>console.log(err))
-    // }
-
-    // static async delet_post(id){
-    //   const editar = await fetch(`${this.baseUrl}/posts/${id}`,{
-    //     method: 'DELETE'
-    //     headers: this.headers
-    //   })
-    //   .then(res =>location.reaload)
-    //   .catch(err =>console.log(err))
     
+  static async user_dados() {
 
-    // }
+    const dados = await fetch(`${this.baseUrl}/users/${localStorage.getItem('@blogzinho:UserID')}`, {
+      method: "GET",
+      headers: this.headers,
+    })
+      .then(response => response.json())
+      .then(response => response)
+      .catch(err => console.error(err));
 
+    Build_Header.build_profile(dados)
+
+  }
+
+  static async get_posts() {
+
+    const dados = await fetch(`${this.baseUrl}/posts?page=1`, {
+      method: "GET",
+      headers: this.headers,
+    })
+      .then(response => response.json())
+      .then(response => response)
+      .catch(err => console.error(err));
+
+    Build_Posts.creat_card(dados)
+  }
+
+
+}
+
+export class Requisition {
+
+  static baseUrl = "https://blog-m2.herokuapp.com"
+    static token = localStorage.getItem("@blogzinho:token") || ""
+    static headers = {
+        'Content-Type':"application/json",
+        Authorization: `Bearer ${this.token}`
+    }
+
+  static posting(dados) {
+
+    fetch(`${this.baseUrl}/posts`, {
+      method: "POST",
+      headers: this.headers,
+      body: `{"content":"${dados}"}`
+    })
+      .then(response => response.json())
+      .then(response => location.reload())
+      .catch(err => console.error(err));
+
+  }
+
+  static edit_post(value, id) {
+
+  fetch(`${this.baseUrl}/posts/${id}`, {
+      method: "PATCH",
+      headers: this.headers,
+      body: `{"content":"${value}"}`
+    })
+      .then(response => response.json())
+      .then(response => location.reload())
+      .catch(err => console.error(err));
+  
+  }
+
+  static delet_post(id) {
+
+  fetch(`${this.baseUrl}/posts/${id}`, {
+      method: "DELETE",
+      headers: this.headers,
+    })
+
+      .then(response => location.reload())
+      
+      .catch(err => console.error(err))
+
+  }
 }
