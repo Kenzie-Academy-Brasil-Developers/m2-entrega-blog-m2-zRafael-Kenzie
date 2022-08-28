@@ -14,10 +14,11 @@ body {
 header {
     background-color: var(--header-color);
     width: 100%;
-    height: 100px;
+    height: 4srem;
     display: flex;
     justify-content: space-around;
     align-items: center;
+    gap: 20rem;
 }
 
 .dados-user {
@@ -27,15 +28,15 @@ header {
 }
 
 .avatar-user {
-    width: 68px;
-    border-radius: 100px;
+    width: 3rem;
+    border-radius: 100%;
 }
 
 .name-user {
-    width: 109px;
+    width: 6rem;
     font-style: normal;
-    font-weight: 700;
-    font-size: 25px;
+    font-weight: 300;
+    font-size: 1.3rem;
     font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
     line-height: 24px;
     color: white;
@@ -64,7 +65,7 @@ main {
 .new-post-container {
 
     min-width: 380PX;
-    width: 750px;
+    width: 800px;
     height: auto;
     min-height: 108px;
     background-color: white;
@@ -82,7 +83,7 @@ main {
     height: 100px;
     word-wrap: break-word;
     resize: unset;
-    border-color: transparent;
+
     font-style: normal;
     font-weight: 400;
     font-size: 20px;
@@ -211,6 +212,7 @@ main {
 }
 
 @media screen and (min-width: 876px) {
+    
 
     .div-img {
         width: 20%;
