@@ -82,7 +82,7 @@ main {
     height: 100px;
     word-wrap: break-word;
     resize: unset;
-
+    border-color: transparent;
     font-style: normal;
     font-weight: 400;
     font-size: 20px;
