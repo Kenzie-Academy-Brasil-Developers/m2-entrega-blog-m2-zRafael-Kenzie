@@ -1,0 +1,264 @@
+:root {
+    --header-color: #6495ED;
+    --background-color: #454D6B;
+    --button-color: #5C5D8D;
+}
+
+body {
+    background-color: var(--background-color);
+    width: 100vw;
+    overflow-x: hidden;
+
+}
+
+header {
+    background-color: var(--header-color);
+    width: 100%;
+    height: 4srem;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    gap: 20rem;
+}
+
+.dados-user {
+    width: auto;
+    display: flex;
+    align-items: center;
+}
+
+.avatar-user {
+    width: 3rem;
+    border-radius: 100%;
+}
+
+.name-user {
+    width: 6rem;
+    font-style: normal;
+    font-weight: 300;
+    font-size: 1.3rem;
+    font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+    line-height: 24px;
+    color: white;
+    margin: 10px;
+    -webkit-text-stroke: 0.5px rgb(0, 0, 0);
+}
+
+.logout-button {
+    background-color: var(--button-color);
+    width: 128px;
+    height: 38px;
+    border: none;
+    border-radius: 20px;
+    font-weight: 700;
+    font-size: 16px;
+    color: white;
+    cursor: pointer;
+}
+
+main {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+}
+
+.new-post-container {
+
+    min-width: 380PX;
+    width: 800px;
+    height: auto;
+    min-height: 108px;
+    background-color: white;
+    border-radius: 20px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: right;
+    margin: 8% 5%;
+}
+
+.post-area {
+    margin: 20px auto 0;
+    width: 90%;
+    max-width: 750px;
+    height: 100px;
+    word-wrap: break-word;
+    resize: unset;
+
+    font-style: normal;
+    font-weight: 400;
+    font-size: 20px;
+    line-height: 24px;
+    color: #363457;
+    border: none;
+}
+
+.postar {
+    background-color: var(--button-color);
+    width: 128px;
+    height: 38px;
+    border: none;
+    border-radius: 20px;
+    font-weight: 700;
+    font-size: 16px;
+    color: white;
+    margin: 5px 10px;
+    cursor: pointer;
+}
+
+.old-posts {
+    width: 100%;
+    height: auto;
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+
+.post-card {
+    width: 750px;
+    height: auto;
+    background-color: white;
+    margin: 2% 5%;
+    padding: 2%;
+    border-radius: 20px;
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+.div-img {
+    width: 50%;
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.author-img {
+    width: 122px;
+    height: 115px;
+    border-radius: 100px;
+    margin: 0 auto;
+
+}
+
+.button-editar-desktop {
+    background-image: url(/src/assets/editar_icon.png);
+    background-position: center;
+    width: 30px;
+    height: 30px;
+    border-radius: 100px;
+    border-style: none;
+    margin: 15%;
+    cursor: pointer;
+    display: none;
+}
+
+.button-excluir-desktop {
+    background-image: url(/src/assets/excluir_icon.png);
+    background-position: center;
+    width: 30px;
+    height: 30px;
+    border-radius: 100px;
+    border-style: none;
+    margin: 15%;
+    cursor: pointer;
+    display: none;
+}
+
+.post-content {
+    width: 100%;
+    text-align: center;
+    padding: 2%;
+}
+
+.post-content p{
+    text-align: center;
+    word-break: break-all;
+}
+
+.button-excluir-mobile {
+    background-image: url(/src/assets/excluir_icon.png);
+    background-position: center;
+    width: 30px;
+    height: 30px;
+    border-radius: 100px;
+    border-style: none;
+    cursor: pointer;
+}
+
+.button-editar-mobile {
+    background-image: url(/src/assets/editar_icon.png);
+    background-position: center;
+    width: 30px;
+    height: 30px;
+    border-radius: 100px;
+    border-style: none;
+    cursor: pointer;
+    margin: 2%;
+}
+
+.footer {
+    text-align: center;
+}
+
+.footer p {
+    margin: 4%;
+}
+
+.post-content h2 {
+    font-style: normal;
+    font-weight: 700;
+    font-size: 24px;
+    line-height: 29px;
+}
+
+@media screen and (min-width: 876px) {
+    
+
+    .div-img {
+        width: 20%;
+        height: 90%;
+        display: flex;
+    }
+
+    .button-editar-desktop,
+    .button-excluir-desktop {
+        display: inline;
+    }
+    
+    .button-excluir-mobile,
+    .button-editar-mobile {
+        display: none;
+    }
+
+    .old-posts{
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .post-content {
+        width: 50%;
+        height: 90%;
+        text-align: left;
+    }
+
+    .post-content h2 {
+        margin: 10px 0;
+    }
+
+    .footer {
+        width: 20%;
+        height: 100%;
+    }
+
+    .footer p {
+        margin-top: 100%;
+    }
+
+    .author-img {
+        width: 122px;
+        height: 115px;
+        border-radius: 100px;
+
+    }
+
+}

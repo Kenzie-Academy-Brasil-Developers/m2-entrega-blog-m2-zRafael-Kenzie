@@ -1,12 +1,39 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="src/styles/reset.css">
+  <link rel="stylesheet" href="src/styles/style.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600;700&display=swap" rel="stylesheet">
   <title>m2-entrega-blog-m2</title>
 </head>
+
 <body>
-  
+  <div class='container'>
+  <form class="login_form">
+    <h2>Entrar</h2>
+    <input name="email" id="emailInput" type="email" placeholder="Digite seu email">
+    <input name="password" id="passwordInput" type="password" placeholder="senha">
+    <button id="btnLogin" type="submit">Entrar</button>
+  </form>
+
+  <form class="singup_form">
+    <h2>Cadastro</h2>
+    <input id="name" type="text" placeholder="Nome do suario">
+    <input id="email" type="email" placeholder="Email">
+    <input id="avatarUrl"  type="text" placeholder="Foto de perfil">
+    <input id="password" type="password" placeholder="Senha">
+    <button id="btnSignup" type="submit">Cadastrar</button>
+  </form>
+</div>
+
+  <script type='module' src="src/scripts/login.js"></script>
+  <script type='module' src="src/scripts/register.js"></script>
 </body>
+
 </html>
